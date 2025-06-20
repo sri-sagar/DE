@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ADF1Udemy"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://sagarudemycourseadls1.dfs.core.windows.net"
+		},
+		"Databricks_ls_properties_typeProperties_existingClusterId": {
+			"value": "0529-102204-m3seyy29"
+		},
+		"f1_process_data_Trigger_properties_pipeline_parameters_race_end_date": {
+			"value": "@trigger().outputs.windowEndTime"
+		},
+		"f1_process_data_trigger_2_properties_pipeline_parameters_race_end_date": {
+			"value": "@trigger().outputs.windowEndTime"
+		}
+	}
+}
