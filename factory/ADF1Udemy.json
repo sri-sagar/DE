@@ -1,0 +1,9 @@
+{
+	"name": "ADF1Udemy",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b00845f0-a0b1-42e5-93c1-43269eb20561",
+		"tenantId": "cb033b6a-6d92-4f46-b453-01a6657228b2"
+	}
+}

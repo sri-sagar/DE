@@ -1,0 +1,67 @@
+{
+	"name": "pp_process_f1_data",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute Ingestion",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pp_f1_ingestion",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"race_end_date": {
+							"value": "@formatDateTime(pipeline().parameters.race_end_date)",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Execute Transformation",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute Ingestion",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pp_f1_transformation",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"race_end_date": {
+							"value": "@formatDateTime(pipeline().parameters.race_end_date)",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"concurrency": 1,
+		"parameters": {
+			"race_end_date": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-06-20T16:05:32Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
